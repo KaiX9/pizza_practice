@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <h1>Order Delivery Details</h1>
+    <form method="POST" data-th-action="@{/pizza/order}" data-th-object="${delivery}">
+        <table>
+            <tr>
+                <td>Name:</td>
+                <td>
+                    <input type="text" size="30" placeholder="Name" data-th-field="*{name}">
+                    <div class="error" data-th-if="${#fields.hasErrors('name')}">
+                        <span data-th-errors="*{name}"></span>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>Address:</td>
+                <td>
+                    <input type="text" size="30" placeholder="Address" data-th-field="*{address}">
+                    <div class="error" data-th-if="${#fields.hasErrors('address')}">
+                        <span data-th-errors="*{address}"></span>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>Phone:</td>
+                <td>
+                    <input type="text" size="30" placeholder="Phone" data-th-field="*{phone}">
+                    <div class="error" data-th-if="${#fields.hasErrors('phone')}">
+                        <span data-th-errors="*{phone}"></span>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>Rush:</td>
+                <td>
+                    <input type="checkbox" data-th-field="*{rush}"/>
+                </td>
+            </tr>
+            <tr>
+                <td>Comments:</td>
+                <td>
+                    <textarea placeholder="Type here" data-th-field="*{comments}" cols="30" rows="5"></textarea>
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <button type="submit" formmethod="GET" formaction="/">Cancel Order</button>
+                    <button type="submit">Place Order</button>
+                </td>
+            </tr>
+        </table>
+    </form>
+</body>
+</html>
